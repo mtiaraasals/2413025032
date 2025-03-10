@@ -41,38 +41,38 @@ navLinks.forEach((link) => {
 
 // Mendapatkan elemen canvas
 // Mendapatkan elemen canvas
-var canvas = document.getElementById('myCanvas');
-var ctx = canvas.getContext('2d');
+    var canvas = document.getElementById('myCanvas');
+    var ctx = canvas.getContext('2d');
 
-// Fungsi untuk menggambar garis menggunakan algoritma DDA
-function garisDDA(X0, Y0, X1, Y1) {
-    var dx = Math.abs(X1 - X0);
-    var dy = Math.abs(Y1 - Y0);
-    var step;
+    // Fungsi untuk menggambar garis menggunakan algoritma DDA
+    function garisDDA(X0, Y0, X1, Y1) {
+        var dx = Math.abs(X1 - X0);
+        var dy = Math.abs(Y1 - Y0);
+        var step;
 
-    // Menentukan jumlah langkah
-    if (dx > dy) {
-        step = dx;
-    } else {
-        step = dy;
+        // Menentukan jumlah langkah
+        if (dx > dy) {
+            step = dx;
+        } else {
+            step = dy;
+        }
+
+        // Menghitung inkremen
+        var Xinc = dx / step;
+        var Yinc = dy / step;
+
+        // Titik awal
+        var X = X0;
+        var Y = Y0;
+
+        // Menggambar titik
+        for (var i = 0; i <= step; i++) {
+            ctx.fillStyle = 'black'; // Warna titik
+            ctx.fillRect(Math.round(X), Math.round(Y), 1, 1); // Menggambar titik
+            X += Xinc; // Mengupdate X
+            Y += Yinc; // Mengupdate Y
+        }
     }
 
-    // Menghitung inkremen
-    var Xinc = dx / step;
-    var Yinc = dy / step;
-
-    // Titik awal
-    var X = X0;
-    var Y = Y0;
-
-    // Menggambar titik
-    for (var i = 0; i <= step; i++) {
-        ctx.fillStyle = 'black'; // Warna titik
-        ctx.fillRect(Math.round(X), Math.round(Y), 1, 1); // Menggambar titik
-        X += Xinc; // Mengupdate X
-        Y += Yinc; // Mengupdate Y
-    }
-}
-
-// Menggambar garis dari (50, 50) ke (300, 150)
-garisDDA(50, 50, 300, 150);
+    // Menggambar garis dari (50, 50) ke (300, 150)
+    garisDDA(50, 50, 300, 150);
