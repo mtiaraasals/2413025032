@@ -42,9 +42,14 @@ navLinks.forEach((link) => {
 var canvas = document.getElementById('myCanvas');
 var ctx = canvas.getContext('2d');
 
-ctx.beginPath();
-ctx.moveTo(0, 0);
-ctx.lineTo(200,100);
-ctx.strokeStyle = 'black';
-ctx.lineWidth = 2;
-ctx.stroke();
+// Menghitung posisi tengah
+var centerX = canvas.width / 2; // X tengah canvas
+var centerY = canvas.height / 2; // Y tengah canvas
+
+// Menggambar garis dari tengah canvas ke titik (300, 100)
+ctx.beginPath(); // Memulai jalur baru
+ctx.moveTo(0, 0); // Titik awal garis di tengah canvas
+ctx.lineTo(200, 100); // Titik akhir garis (x, y)
+ctx.strokeStyle = 'black'; // Warna garis
+ctx.lineWidth = 2; // Ketebalan garis
+ctx.stroke(); // Menggambar garis
