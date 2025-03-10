@@ -40,17 +40,39 @@ navLinks.forEach((link) => {
 });
 
 // Mendapatkan elemen canvas
+// Mendapatkan elemen canvas
 var canvas = document.getElementById('myCanvas');
 var ctx = canvas.getContext('2d');
 
-// Menghitung posisi tengah
-var centerX = canvas.width / 2; // X tengah canvas
-var centerY = canvas.height / 2; // Y tengah canvas
+// Fungsi untuk menggambar garis menggunakan algoritma DDA
+function garisDDA(X0, Y0, X1, Y1) {
+    var dx = Math.abs(X1 - X0);
+    var dy = Math.abs(Y1 - Y0);
+    var step;
 
-// Menggambar garis dari tengah canvas ke titik (300, 100)
-ctx.beginPath(); // Memulai jalur baru
-ctx.moveTo(0, 0); // Titik awal garis di tengah canvas
-ctx.lineTo(200, 100); // Titik akhir garis (x, y)
-ctx.strokeStyle = 'black'; // Warna garis
-ctx.lineWidth = 2; // Ketebalan garis
-ctx.stroke(); // Menggambar garis
+    // Menentukan jumlah langkah
+    if (dx > dy) {
+        step = dx;
+    } else {
+        step = dy;
+    }
+
+    // Menghitung inkremen
+    var Xinc = dx / step;
+    var Yinc = dy / step;
+
+    // Titik awal
+    var X = X0;
+    var Y = Y0;
+
+    // Menggambar titik
+    for (var i = 0; i <= step; i++) {
+        ctx.fillStyle = 'black'; // Warna titik
+        ctx.fillRect(Math.round(X), Math.round(Y), 1, 1); // Menggambar titik
+        X += Xinc; // Mengupdate X
+        Y += Yinc; // Mengupdate Y
+    }
+}
+
+// Menggambar garis dari (50, 50) ke (300, 150)
+garisDDA(50, 50, 300, 150);
