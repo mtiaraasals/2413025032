@@ -46,7 +46,7 @@ var centerX = canvas.width / 2;
 var centerY = canvas.height / 2;
 
 ctx.beginPath();
-ctx.moveTo(0, 0);
+ctx.moveTo(centerX, centerY);
 ctx.strokeStyle = 'black';
 ctx.lineWidth = 2;
 ctx.stroke();
