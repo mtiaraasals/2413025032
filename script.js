@@ -75,4 +75,49 @@ function garisDDA(X0, Y0, X1, Y1) {
 }
 
 // Menggambar garis dari (50, 50) ke (300, 150)
-garisDDA(50, 50, 300, 150); 
+garisDDA(50, 50, 300, 150);
+
+document.addEventListener("DOMContentLoaded", function() {
+  function AlgoritmaBresenham(x0, y0, r) {
+      const canvas = document.getElementById('CanvasLingkaran');
+      const ctx = canvas.getContext('2d');
+
+      let x = 0;
+      let y = r;
+      let d = 3 - 2 * r;
+
+      function drawPoints(x, y) {
+          ctx.fillRect(x0 + x, y0 + y, 2, 2);
+          ctx.fillRect(x0 - x, y0 + y, 2, 2);
+          ctx.fillRect(x0 + x, y0 - y, 2, 2);
+          ctx.fillRect(x0 - x, y0 - y, 2, 2);
+          ctx.fillRect(x0 + y, y0 + x, 2, 2);
+          ctx.fillRect(x0 - y, y0 + x, 2, 2);
+          ctx.fillRect(x0 + y, y0 - x, 2, 2);
+          ctx.fillRect(x0 - y, y0 - x, 2, 2);
+      }
+
+      drawPoints(x, y);
+
+      while (y >= x) {
+          x++;
+
+          if (d < 0) {
+              d = d + 4 * x + 6;
+          } else {
+              y--;
+              d = d + 4 * (x - y) + 10;
+          }
+
+          drawPoints(x, y);
+      }
+  }
+
+  // Panggil fungsi untuk menggambar lingkaran setelah halaman dimuat
+  const x0 = 200, y0 = 50;
+  const r = 70;
+  const centerX = canvas.width / 2;
+  const centerY = canvas.height / 2;
+  const radius = 70;
+  AlgoritmaBresenham(centerX, centerY, radius);
+});
