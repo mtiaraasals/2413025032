@@ -114,8 +114,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   // Panggil fungsi untuk menggambar lingkaran setelah halaman dimuat
-  const x0 = 200, y0 = 50;
-  const r = 70;
+
   const centerX = canvas.width / 2;
   const centerY = canvas.height / 2;
   const radius = 70;
